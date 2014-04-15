@@ -1,0 +1,6 @@
+CAAJnmGWAmjMBALgPE6k5Yiajx2xlEE3Qi8SJqUEYiyTJtqnZBB0eamfQUaT8GBNmEwzWSmK2mBafZCwj5XyFjKHih4eNNmkqxWTuNphspJenJIfj2wuFxtDUXc9eBvbixxJgQlMwyTzEGSiZBrWZBF6iXjydpNRqlZBZBXDkOgNTqf0ZAEv4FZBL1rsaUI1yZCIIZD
+
+GET /oauth/access_token?
+     client_id={app-id}
+    &client_secret={app-secret}
+    &grant_type=client_credentials
