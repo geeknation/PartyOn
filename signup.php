@@ -1,52 +1,44 @@
-<?php
-/*
-require_once ("facebook-php-sdk/src/facebook.php");
-
-var_dump($auth);
- $config = array(
- 'appId' => '676854189038131',
- 'secret' => '1b1c02ce90b6d86bc83059be2b1e0ca4',
- 'allowSignedRequest' => false, // optional but should be set to false for non-canvas apps,
- );
- $facebook = new Facebook($config);
- $facebook->setAccessToken("CAAJnmGWAmjMBAIl1uSUoNN4PSuT9ZCvNGPlMam0HRuM84SVZBJJD6VmC58p9RvvUl6dfd1HHFzRJpDE5XUZCi4oPZAvpLZCZAERMypnuorRqkyX368ZBjYpt9t13UZBPOFfwaFrXw9SssWYC6dpekqQ6xdPHIPX2pmZBanwwb9bEE0U04g6qKcNqsMF9yvENDwOgZD");
- $response=$facebook->api("/me?fields=email,user_birthday");
- var_dump($response);
- //$user = $facebook -> getUser();
-
- if ($user) {
- try {
- $user_profile = $facebook -> api('/me');
- } catch(FacebookApiException $e) {
- $user = NULL;
- }
- }
-
- if ($user) {
- $logoutUrl = $facebook -> getLogoutUrl();
- } else {
- $loginUrl = $facebook -> getLoginUrl(array('scope' => 'email', 'redirect_uri' => $site_url, ));
- }
-
- if ($user) {
- Echo "Email : " . $user_profile['email'];
- }*/
-?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Sign Up| Party on</title>
+		<title>Sign Up| Party On</title>
 		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css" type="text/css"/>
 		<style type="text/css">
+			body {
+				background: #390072;
+			}
+			#wrapper{
+				margin-top:5%;
+			}
+			#billboard{
+				width:30%;
+				background: #FFFFFF;
+				height:400px;
+				float:left;
+				margin-left:3%;
+				margin-top: 5%;
+			}
 			#sign-up-div {
-				width: 50%;
-				margin: 1%;
+				border: solid thin #000000;
+				background: #FFFFFF;
+				margin-top: 5%;
+				margin-right: 3%;
+				padding: 2%;
+				width:45%;
+				float: right;
+			}
+			#sign-up-div > p {
 				margin: 0 auto;
 			}
+			.navbar-default{
+				background-color:#FFFFFF !important;
+			}
+			
 		</style>
 	</head>
+
 	<body>
 		<div id="fb-root"></div>
 		<script>
@@ -61,16 +53,13 @@ var_dump($auth);
 					if (response.status === 'connected') {
 						testAPI();
 					} else if (response.status === 'not_authorized') {
-						//login();
-						document.getElementById("loginpanel").innerHTML = "<a href='#' onclick='login()'><img src='facebook-register-button.png' /></a>";
+						document.getElementById("facebook-login").innerHTML = '<button type="button" class="btn btn-primary btn-lg btn-block btn-fb" onclick="login()">Sign Up with Facebook (recommended)</button><p>OR</p>';
 					} else {
-						//login();
-						document.getElementById("loginpanel").innerHTML = "<a href='#' onclick='login()'><img src='facebook-register-button.png' /></a>";
+						document.getElementById("facebook-login").innerHTML = '<button type="button" class="btn btn-primary btn-lg btn-block btn-fb" onclick="login()">Sign Up with Facebook (recommended)</button><p>OR</p>';
 					}
 				});
 
-			};
-			( function(d) {
+			}; ( function(d) {
 					var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 					if (d.getElementById(id)) {
 						return;
@@ -134,56 +123,111 @@ var_dump($auth);
 			 }*/
 
 		</script>
-		
-		
-		<div id="loginpanel"></div>
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Brand</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						
+						<a href="#">Link</a>
+					</li>
+
+					<li>
+						<a href="#">Link</a>
+					</li>
+
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">Link</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#">Action</a>
+							</li>
+							<li>
+								<a href="#">Another action</a>
+							</li>
+							<li>
+								<a href="#">Something else here</a>
+							</li>
+							<li>
+								<a href="#">Separated link</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div>
+		<!-- end of navbar -->
 		<div id="wrapper">
-			<div id="sign-up-div">
-				<img id="img" width="50" height="50"/>
-				<div id="loginpanel"></div>
+			<div id="billboard" class="panel">
+				
+			</div>
+			<div id="sign-up-div" class="panel">
+				<div id="facebook-login"></div>
+				<img id="img" width="60" height="60" class="img-circle"/>
 				<div id="respdata"></div>
-				<form>
+				<form class="sign-up-form">
 					<div class="form-group">
 						<label for="firstname">First Name</label>
-						<input type="text" class="form-control" id="firstname" placeholder="First Name">
+						<input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
 					</div>
 					<div class="form-group">
 						<label for="lastname">Last Name</label>
-						<input type="text" class="form-control" id="lastname" placeholder="Last Name">
+						<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">
 					</div>
 					<div class="form-group">
 						<label for="">Email</label>
-						<input type="text" class="form-control" id="email" placeholder="Email">
+						<input type="text" class="form-control" id="email" name="email" placeholder="Email">
 					</div>
 					<div class="form-group">
 						<label for="">Location</label>
-						<input type="text" class="form-control" id="location" placeholder="Location">
+						<input type="text" class="form-control" id="location" name="location" placeholder="Location">
 					</div>
 					<div class="form-group">
 						<label for="dob">Date of Birth</label>
-						<input type="text" class="form-control" id="dob" placeholder="dob">
+						<input type="text" class="form-control" id="dob" name="dob" placeholder="dob">
 					</div>
 					<hr/>
 					<div class="form-group">
 						<label for="username">Username</label>
-						<input type="text" class="form-control" id="username" placeholder="Username">
+						<input type="text" class="form-control" id="username" name="username" placeholder="Username">
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label>
-						<input type="password" class="form-control" id="password" placeholder="Enter Password">
+						<input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
 					</div>
 
 					<div class="form-group">
 						<label for="confirmpassword">Confirm Password</label>
-						<input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password">
+						<input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password">
 					</div>
-					<button type="button" class="btn btn-primary btn-lg">
+					<button type="button" class="btn btn-primary btn-lg login-btn">
 						Create Account
 					</button>
 				</form>
+
 			</div>
+
 		</div>
 		<script type="text/javascript" src="libs/jquery1.9.js"></script>
+		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
 
