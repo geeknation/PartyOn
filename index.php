@@ -38,38 +38,54 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Sign Up| Party on</title>
-		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css" type="text/css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400' rel='stylesheet' type='text/css'>
+		<!-- <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css" type="text/css"/> -->
+		<link rel="stylesheet" href="libs/vegas/jquery.vegas.css" type="text/css"/>
 		<style type="text/css">
-			body{
-				background:#390072;
+			body {
+				background: #390072;
+				font-family: 'Open Sans', sans-serif !important;
+			}
+			#prod-info {
+				float: left;
+				width: 40%;
+				background: rgb(255,255,255);
+				margin-left: 1%;
+			}
+			#prod-info > h1 {
+				padding: .5%;
 			}
 			#sign-up-div {
 				border: solid thin #000000;
-				background:#FFFFFF;
-				margin-top:5%;
-				text-align:center;
-				padding:1%;
+				background: #FFFFFF;
+				margin-top: 5%;
+				text-align: center;
+				padding: 1%;
 			}
-			#sign-up-div>p{
-				margin:0 auto;
+			#sign-up-div > p {
+				margin: 0 auto;
 			}
 			#loginpanel {
 				border: solid thin #000000;
-				background:#FFFFFF;
+				background: #FFFFFF;
+				padding: 3%;
 			}
 			#start-user-panel {
-				width: 50%;
+				width: 30%;
 				margin-right: 5%;
 				float: right;
-				padding: 1%;
 			}
-			.btn-fb{
-				
+			.btn-fb {
+				background: #3B5998 !important;
 			}
-			.navbar-default{
-				background-color:#FFFFFF !important;
+			.navbar-default {
+				background-color: #FFFFFF !important;
 			}
 		</style>
+		<script type="text/javascript" src="libs/jquery1.9.js"></script>
+		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js"></script>
+
 	</head>
 	<body>
 		<div id="fb-root"></div>
@@ -77,17 +93,16 @@
 			window.fbAsyncInit = function() {
 				FB.init({
 					appId : '676854189038131',
+					version : 'v2.0',
 					access_token : 'CAAJnmGWAmjMBAIl1uSUoNN4PSuT9ZCvNGPlMam0HRuM84SVZBJJD6VmC58p9RvvUl6dfd1HHFzRJpDE5XUZCi4oPZAvpLZCZAERMypnuorRqkyX368ZBjYpt9t13UZBPOFfwaFrXw9SssWYC6dpekqQ6xdPHIPX2pmZBanwwb9bEE0U04g6qKcNqsMF9yvENDwOgZD',
 					status : true,
 					xfbml : true
 				});
 				FB.getLoginStatus(function(response) {
-					if (response.status === 'connected') {
-						location.href="signup.php";
-					} else if (response.status === 'not_authorized') {
-						document.getElementById("facebook-login").innerHTML = '<button type="button" class="btn btn-primary btn-lg btn-block btn-fb" onclick="login()">Sign Up with Facebook (recommended)</button>';
+					if (response.status === 'not_authorized') {
+						$("#facebook-login").html('<button type="button" class="btn btn-primary btn-lg btn-block btn-fb" onclick="login()">Sign Up with Facebook</button>');
 					} else {
-						document.getElementById("facebook-login").innerHTML = '<button type="button" class="btn btn-primary btn-lg btn-block btn-fb" onclick="login()">Sign Up with Facebook (recommended)</button>';
+						$("#facebook-login").html('<button type="button" class="btn btn-primary btn-lg btn-block btn-fb" onclick="login()">Sign Up with Facebook</button>');
 					}
 				});
 
@@ -100,7 +115,7 @@
 					js = d.createElement('script');
 					js.id = id;
 					js.async = true;
-					js.src = "//connect.facebook.net/en_US/all.js";
+					js.src = "//connect.facebook.net/en_US/sdk.js";
 					ref.parentNode.insertBefore(js, ref);
 				}(document));
 			function login() {
@@ -120,7 +135,6 @@
 					location.href = "signup.php";
 				});
 			}
-
 			function testAPI() {
 				var resp = document.getElementById("respdata");
 				FB.api('/me', function(response) {
@@ -208,31 +222,51 @@
 		</div>
 
 		<div id="wrapper">
-
+			<div id="prod-info">
+				<h1> Partying just got Better :). </h1>
+			</div>
 			<div id="start-user-panel">
+
 				<div id="loginpanel" class="panel">
-					<form class="form-inline" role="search">
+					<h3>Login</h3>
+					<hr/>
+					<form class="" role="search">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Username">
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="password">
 						</div>
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-warning btn-block">
 							Login
 						</button>
 					</form>
 				</div>
 				<div id="sign-up-div" class="panel">
-					<div id="facebook-login"></div>
-					<p>OR</p>
-					<button type="button" class="btn btn-lg btn-block">Sign Up with Email</button>
+					<p id="facebook-login">
+						
+					</p>
 				</div>
 			</div>
 
 		</div>
-		<script type="text/javascript" src="libs/jquery1.9.js"></script>
-		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="libs/vegas/jquery.vegas.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				$.vegas('slideshow', {
+					backgrounds : [{
+						src : 'images/1.jpg'
+					}, {
+						src : 'images/DJ1.jpg'
+					}, {
+						src : 'images/GHGHG.jpg'
+					}],
+					fade : 7000
+				});
+
+			});
+		</script>
 		<script type="text/javascript" src="main.js"></script>
 
 	</body>

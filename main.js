@@ -27,7 +27,7 @@ $(function() {
 			}
 		} else if ($("#password").val()!=$("#confirmpassword").val()) {
 			$("#password").popover({
-				placement : 'right',
+				placement : 'left',
 				html:true,
 				content : '<b class="text-danger">Passwords not matching</b>',
 				animation : true,
@@ -62,7 +62,9 @@ $(function() {
 					
 				}
 			}).done(function(data){
-				console.log(data);
+				if(data.action=="create-account" && data.message=="account created"){
+					window.location.href="completesignup.php";
+				}
 			});
 		}
 

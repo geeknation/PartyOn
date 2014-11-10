@@ -10,8 +10,8 @@ class EntelDB {
 	private $dbUsername = '';
 	private $dbPassword = '';
 	static protected $instance;
-	public static $conn;
-	protected function __construct($dbName, $dbUsername, $dbPassword) {
+	public $conn;
+	function __construct($dbName, $dbUsername, $dbPassword) {
 		$this -> dbName = $dbName;
 		$this -> dbUsername = $dbUsername;
 		$this -> dbPassword = $dbPassword;
