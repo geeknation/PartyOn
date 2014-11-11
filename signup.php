@@ -6,6 +6,7 @@
 		<title>Sign Up| Party On</title>
 		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css" type="text/css"/>
 		<link rel="stylesheet" href="libs/vegas/jquery.vegas.css" type="text/css"/>
+		<link rel="stylesheet" href="libs/awesome-bootstrap-checkbox.css" type="text/css"/>
 		<style type="text/css">
 			body {
 				background: #390072;
@@ -227,7 +228,7 @@
 						<input type="password" class="form-control input-sm" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password">
 					</div>
 					<button type="button" class="btn btn-primary btn-lg login-btn">
-						Create Account
+						Continue >
 					</button>
 					<input type="hidden" value="create-user" class="flag" name="flag">
 				</form>
@@ -239,6 +240,7 @@
 		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 		<script type="text/javascript" src="libs/vegas/jquery.vegas.js"></script>
+		
 		<script type="text/javascript">
 			$(function() {
 
