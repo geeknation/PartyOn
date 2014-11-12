@@ -30,11 +30,15 @@
 				margin: 0 auto;
 			}
 			div.checkbox label {
-				padding-left:2%;
+				padding-left: 2%;
+			}
+			button.pick-tastes {
+				behaviour: url();
 			}
 		</style>
 	</head>
 	<body>
+		<?php ?>
 		<div class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -160,39 +164,50 @@
 
 						<div class="form-group">
 							<div class="checkbox checkbox-success checkbox-circle">
-								<input id="corporate_events" type="checkbox" class="col-sm-2 value="corporate_events" data-size="xl" data-toggle="checkbox-x">
+								<input id="corporate_events" type="checkbox" class="col-sm-2" value="corporate_events" data-size="xl" data-toggle="checkbox-x">
 								<label for="corporate_events" class="col-lg-10"> <b>Corporate Events</b> </label>
-								</div>
-								</div>
+							</div>
+						</div>
 
-								<input type="button" class="btn btn-info btn-block" id="pick-tastes" value="Save and continue">
-								</form>
+						<input type="button" class="btn btn-info btn-block" id="pick-tastes" value="Save and continue">
+					</form>
 
-								</div>
+				</div>
 
-								</div>
-								</div>
+			</div>
+		</div>
 
-								</div>
+		</div>
 
-								<script type="text/javascript" src="libs/jquery1.9.js"></script>
-								<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
-								<script type="text/javascript" src="libs/vegas/jquery.vegas.js"></script>
-								<script type="text/javascript">
-jQuery(document).ready(function($) {
-$.vegas('slideshow', {
-backgrounds : [{
-src : 'images/1.jpg'
-}, {
-src : 'images/DJ1.jpg'
-}, {
-src : 'images/GHGHG.jpg'
-}],
-fade : 7000
-});
-});
+		<script type="text/javascript" src="libs/jquery1.9.js"></script>
+		<script type="text/javascript" src="libs/modernizr/modernizr-2.8.3.js"></script>
+		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="libs/vegas/jquery.vegas.js"></script>
+		<script type="text/javascript" src="libs/webshim/js-webshim/minified/polyfiller.js"></script>
+		<script type="text/javascript">
+			Modernizr.load({
+				test : Modernizr.geolocation,
+				yep : 'geo.js',
+				nope : 'geo-polyfill.js'
+			});
+			webshims.polyfill();
+			jQuery(document).ready(function($) {
 
-								</script>
+				/*
+				 $.vegas('slideshow', {
+				 backgrounds : [{
+				 src : 'images/1.jpg'
+				 }, {
+				 src : 'images/DJ1.jpg'
+				 }, {
+				 src : 'images/GHGHG.jpg'
+				 }],
+				 fade : 7000
+				 });*/
+
+			});
+
+		</script>
 
 	</body>
 </html>
