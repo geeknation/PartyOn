@@ -32,13 +32,13 @@
 			div.checkbox label {
 				padding-left: 2%;
 			}
-			button.pick-tastes {
-				behaviour: url();
+			#pick-tastes {
+				behaviour: url(libs/PIE/PIE.htc);
 			}
 		</style>
 	</head>
 	<body>
-		<?php ?>
+
 		<div class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -180,19 +180,27 @@
 		</div>
 
 		<script type="text/javascript" src="libs/jquery1.9.js"></script>
-		<script type="text/javascript" src="libs/modernizr/modernizr-2.8.3.js"></script>
 		<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="libs/vegas/jquery.vegas.js"></script>
+		<script type="text/javascript" src="libs/modernizr/modernizr-2.8.3.js"></script>
 		<script type="text/javascript" src="libs/webshim/js-webshim/minified/polyfiller.js"></script>
+		<script type="text/javascript" src="libs/selectivizr/selectivizr.js"></script>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+		<script type="text/javascript" src="libs/cssFx/cssfx.js"></script>
 		<script type="text/javascript">
+		
 			Modernizr.load({
 				test : Modernizr.geolocation,
 				yep : 'geo.js',
 				nope : 'geo-polyfill.js'
-			});
+			});	
 			webshims.polyfill();
+			
 			jQuery(document).ready(function($) {
 
+				
 				/*
 				 $.vegas('slideshow', {
 				 backgrounds : [{
